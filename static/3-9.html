@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>立式四方刀架部件拆装</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" type="text/javascript"></script>
+</head>
+
+<body onresize="refresh()">
+    <!--背景-->
+    <div id="bg1" style="background: rgb(192, 221, 255);">
+        <!--侧边栏-->
+        <div id="ce">
+            <button class="but3-1" onclick="click5()">返回</button>
+            <button class="but3-1" style="
+            width: 127px;
+            height: 29px;
+            top: 85px;
+            left: 39px;
+            " onclick="click6()">安全操作规范</button>
+        </div>
+        <!--底边栏-->
+        <div class="di">
+            <button class="but3-2" onclick="click2(0)" style="top: 10px;background: #dfe8f3;">常用工具</button>
+            <button class="but3-2" onclick="click2(1)">专用工具</button>
+            <button class="but3-2" onclick="click2(2)" style="top: 103px;">量具</button>
+            <button class="but3-2" onclick="click2(3)" style="top: 153px;">其他</button>
+            <div class="img3-1" onclick="click1(0)" style="background-image: url('1.1手.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(0)">手</div>
+            <div class="img3-1" onclick="click1(1)" style="left: 392px;background-image:url('1.2丝锥.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(1)" style="left: 392px ;">丝锥</div>
+            <div class="img3-1" onclick="click1(2)" style="left: 526px;background-image:url('1.3一字螺丝刀.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(2)" style="left: 526px;">一字螺丝刀</div>
+            <div class="img3-1" onclick="click1(3)" style="left: 660px;background-image:url('1.4十字螺丝刀.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(3)" style="left: 660px;">十字螺丝刀</div>
+            <div class="img3-1" onclick="click1(4)" style="left: 794px;background-image:url('1.5吊装设备.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(4)" style="left: 794px;">吊装设备</div>
+            <div class="img3-1" onclick="click1(5)" style="left: 928px;background-image:url('1.6月牙扳手.gif');"></div>
+            <div class="txt3-1" id="wz" onclick="click1(5)" style="left: 928px;">月牙扳手</div>
+            <div class="img3-2" onclick="click3(0)"></div>
+            <div class="img3-2" onclick="click3(1)" style="top: 100px; transform: rotate(180deg);"></div>
+            <button class="but3-3" onclick="nos(0)">拆装流程图</button>
+            <button class="but3-3" style="top: 100px;" onclick="click4()">拆装案例演示</button>
+            <button class="but3-3" style="left: 1350px;" onclick="l()">装配图</button>
+            <button class="but3-3" style="top: 100px; left: 1350px; background: rgb(208, 209, 210);"
+                onclick="nos(1)">手动拆装</button>
+        </div>
+        <!--视频窗口-->
+        <div class="vid" id="vidbox" onclick="nos(1)" style="display: block;">
+            <video id="vid" width="800px" height="500px"></video>
+        </div>
+        <div class="vid" id="img1" style="background:url('安全规程机械.png');background-size:cover;">
+            <div style="position: absolute;width: 30px;height: 30px;right:0;top:0;background:url('关闭.png');background-size:cover;"
+                onclick="click7(1)"></div>
+        </div>
+        <div class="vid" id="img2"
+            style="position: absolute;width: 400px;height: 400px;top: 44px;left: 640px;background-size:contain;">
+            <div style="position: absolute;width: 30px;height: 30px;right:15px;top:5px;background:url('关闭.png');background-size:cover;"
+                onclick="click7(2)"></div>
+        </div>
+        <img id="im" width="64px" height="64px" style="position: absolute; pointer-events:none;display: none;">
+    </div>
+</body>
+<script>
+    /*
+            在这里修改文件地址
+            1.视频
+            2.流程图
+            3.装配图
+            4.视频播完弹窗
+            路径放在双引号里，例如：
+            "数控加工中心文件/加工/铣头/铣头.mp4"
+            所有符号必须半角
+
+
+    */
+    var a, b, c, d;
+    a = "数控车床文件/立式四方刀架/立式四方刀架.mp4" 
+b = "数控车床文件/立式四方刀架/立式四方刀架拆卸图.jpg"
+c = "数控车床文件/立式四方刀架/立式四方刀架装配流程图 (2).jpg"
+d = "机械拆装评分/9-立式四方刀架评分结果.png"
+    //根据窗口裁剪底图
+    document.getElementById("bg1").style.width = winwigh + 'px';
+    document.getElementById("bg1").style.height = winheight + 'px';
+    //
+    document.getElementById("vid").src = a
+    document.getElementById("img2").style.backgroundImage = "url('" + d + "')"
+    //点击高亮
+    var q1 = 0, q2;
+    function click1(a) {
+        document.getElementById("im").style.display = "block"
+        if (q1 == 10) {
+            if (a != 5) {
+                q2 = "透明工具图标/1-" + (a + 7) + ".ico"
+            }
+
+        } else {
+            q2 = "透明工具图标/" + (q1 + 1) + "-" + (a + 1) + ".ico"
+        }
+        document.getElementById("im").src = q2
+        var x = document.getElementsByClassName("txt3-1");
+        x[a].style.border = "2px solid rgb(63, 108, 176)";
+        for (i = 0; i < a; i++) {
+            x[i].style.border = "0";
+        }
+        for (i = a + 1; i < x.length; i++) {
+            x[i].style.border = "0";
+        }
+    }
+    function click2(a) {
+        q1 = a;
+        var x = document.getElementsByClassName("but3-2");
+        x[a].style.background = "#dfe8f3";
+        document.body.style.cursor = "url('3.3钢直尺.gif')"
+        for (i = 0; i < a; i++) {
+            x[i].style.background = "#c0d2e7";
+        }
+        for (i = a + 1; i < x.length; i++) {
+            x[i].style.background = "#c0d2e7";
+        }
+        var y = document.getElementsByClassName("img3-1");
+        var z = document.getElementsByClassName("txt3-1");
+        switch (a) {
+            case 0:
+                y[0].style.backgroundImage = "url('1.1手.gif')";
+                y[1].style.backgroundImage = "url('1.2丝锥.gif')";
+                y[2].style.backgroundImage = "url('1.3一字螺丝刀.gif')";
+                y[3].style.backgroundImage = "url('1.4十字螺丝刀.gif')";
+                y[4].style.display = "block";
+                y[5].style.display = "block";
+                y[4].style.backgroundImage = "url('1.5吊装设备.gif')";
+                y[5].style.backgroundImage = "url('1.6月牙扳手.gif')";
+                z[0].innerText = "手";
+                z[1].innerText = "丝锥";
+                z[2].innerText = "一字螺丝刀";
+                z[3].innerText = "十字螺丝刀";
+                z[4].style.display = "block";
+                z[5].style.display = "block";
+                z[4].innerText = "吊装设备";
+                z[5].innerText = "月牙扳手";
+                document.getElementsByClassName("img3-2")[0].style.display = "block";
+                document.getElementsByClassName("img3-2")[1].style.display = "block";
+                break;
+            case 1:
+                y[0].style.backgroundImage = "url('2.1拔刀.gif')";
+                y[1].style.backgroundImage = "url('2.2刮刀.gif')";
+                y[2].style.backgroundImage = "url('2.3钢丝绳和铜棒.gif')";
+                y[3].style.backgroundImage = "url('2.4铜棒和铁锤.gif')";
+                y[4].style.display = "block";
+                y[5].style.display = "block";
+                y[4].style.backgroundImage = "url('2.5铝棒和铁锤.gif')";
+                y[5].style.backgroundImage = "url('2.6铜棒.gif')";
+                z[0].innerText = "拔刀";
+                z[1].innerText = "刮刀";
+                z[2].innerText = "钢丝绳和铜棒";
+                z[3].innerText = "铜棒和铁锤";
+                z[4].style.display = "block";
+                z[5].style.display = "block";
+                z[4].innerText = "铝棒和铁锤";
+                z[5].innerText = "铜棒";
+                document.getElementsByClassName("img3-2")[0].style.display = "none";
+                document.getElementsByClassName("img3-2")[1].style.display = "none";
+                break;
+            case 2:
+                y[0].style.backgroundImage = "url('3.1水平仪.gif')";
+                y[1].style.backgroundImage = "url('3.2水平仪2.gif')";
+                y[2].style.backgroundImage = "url('3.3钢直尺.gif')";
+                y[3].style.backgroundImage = "url('3.4赛尺.gif')";
+                y[4].style.display = "block";
+                y[5].style.display = "block";
+                y[4].style.backgroundImage = "url('3.5深度卡尺.gif')";
+                y[5].style.backgroundImage = "url('3.6百分表磁力.gif')";
+                z[0].innerText = "水平仪1";
+                z[1].innerText = "水平仪2";
+                z[2].innerText = "钢直尺";
+                z[3].innerText = "赛尺";
+                z[4].style.display = "block";
+                z[5].style.display = "block";
+                z[4].innerText = "深度卡尺";
+                z[5].innerText = "百分表磁力";
+                document.getElementsByClassName("img3-2")[0].style.display = "none";
+                document.getElementsByClassName("img3-2")[1].style.display = "none";
+                break;
+            case 3:
+                y[0].style.backgroundImage = "url('4.1溶剂.gif')";
+                y[1].style.backgroundImage = "url('4.2抹布.gif')";
+                y[2].style.backgroundImage = "url('4.3红丹粉.gif')";
+                y[3].style.backgroundImage = "url('4.4黄油.gif')";
+                y[4].style.display = "none";
+                y[5].style.display = "none";
+                z[0].innerText = "溶剂";
+                z[1].innerText = "抹布";
+                z[2].innerText = "红丹粉";
+                z[3].innerText = "黄油";
+                z[4].style.display = "none";
+                z[5].style.display = "none";
+                document.getElementsByClassName("img3-2")[0].style.display = "none";
+                document.getElementsByClassName("img3-2")[1].style.display = "none";
+                break;
+        }
+    }
+    function click3(a) {
+        var y = document.getElementsByClassName("img3-1");
+        var z = document.getElementsByClassName("txt3-1");
+        if (a == 1) {
+            q1 = 10
+            y[0].style.backgroundImage = "url('1.7开口扳手.gif')";
+            y[1].style.backgroundImage = "url('1.8内六角扳手.gif')";
+            y[2].style.backgroundImage = "url('1.9活动扳手.gif')";
+            y[3].style.backgroundImage = "url('1.10专用扳手.gif')";
+            //y[4].style.display="block";
+            //y[5].style.display="block";
+            y[4].style.backgroundImage = "url('1.11内卡簧钳.gif')";
+            y[5].style.backgroundImage = "url('等待上线.png')";
+            z[0].innerText = "开口扳手";
+            z[1].innerText = "内六角扳手";
+            z[2].innerText = "活动扳手";
+            z[3].innerText = "专用扳手";
+            //z[4].style.display="block";
+            //z[5].style.display="block";
+            z[4].innerText = "内卡簧钳";
+            z[5].innerText = "等待上线";
+        } else {
+            q1 = 0
+            y[0].style.backgroundImage = "url('1.1手.gif')";
+            y[1].style.backgroundImage = "url('1.2丝锥.gif')";
+            y[2].style.backgroundImage = "url('1.3一字螺丝刀.gif')";
+            y[3].style.backgroundImage = "url('1.4十字螺丝刀.gif')";
+            //y[4].style.display="block";
+            //y[5].style.display="block";
+            y[4].style.backgroundImage = "url('1.5吊装设备.gif')";
+            y[5].style.backgroundImage = "url('1.6月牙扳手.gif')";
+            z[0].innerText = "手";
+            z[1].innerText = "丝锥";
+            z[2].innerText = "一字螺丝刀";
+            z[3].innerText = "十字螺丝刀";
+            //z[4].style.display="block";
+            //z[5].style.display="block";
+            z[4].innerText = "吊装设备";
+            z[5].innerText = "月牙扳手";
+        }
+    }
+    function click5() {
+        window.location.replace("2.html")
+    }
+    function click4() {
+        var v = document.getElementById("vid")
+        v.play()
+    }
+    function nos(a) {
+        switch (a) {
+            case 0:
+                window.open(b)
+                break
+            case 1:
+                alert("功能暂时维护中，请点击拆装案例演示查看效果")
+                break
+
+        }
+    }
+    function l() {
+        window.open(c)
+    }
+    function click6() {
+        document.getElementById("img1").style.display = "block"
+    }
+    function click7(a1) {
+        document.getElementById("img" + a1).style.display = "none"
+    }
+    //事件监听
+    var vl = document.getElementById("vid")
+    vl.addEventListener('ended', function () {
+        document.getElementById("img2").style.display = "block"
+    }, false)
+    let img = document.querySelector("img")
+    document.addEventListener('mousemove', function (event) {
+        img.style.left = event.pageX - 32 + "px"
+        img.style.top = event.pageY - 32 + "px"
+    })
+</script>
+
+</html>

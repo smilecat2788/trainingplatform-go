@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>数控车床协同装配练习</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+
+</head>
+
+<body>
+	<div id="bg" style="overflow: hidden;">
+
+		<div class="div4-1">
+			<div class="back" style="position: absolute;top: 20px;left:65px;background-image:url(返回.png);width: 30px;height: 30px;background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;" onclick="back()"></div>
+			<div class="back" style="height: 30px;left:30px ;position: absolute;top: 23px;left:100px;" onclick="back()">
+				返回</div>
+			<div class="title">团队协作/数控车床协同装配练习</div>
+			<div style="
+                position: absolute;
+                width: 300px;
+                height: 30px;
+                top: 50px;
+                left: 1040px;">
+				<div style="background-image:url(未知状态.png);width: 20px;height: 20px;position: absolute;background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;"></div>
+
+				&emsp;&emsp;请在二人以上环境下运行
+			</div>
+			<div class="div4-2"></div>
+			<div class="div4-3">
+				姓名：吴云飞<br> 账号：JDX201214
+				<br> 状态：准备就绪
+				<br> 装配选项：
+				<select style="height:30px;width:110px;font-size: 15px;">
+					<option>主轴部分</option>
+					<option>进给传动部件</option>
+					<option>尾座部分</option>
+					<option>主轴传动部件</option>
+					<option>整机组装</option>
+				</select>
+			</div>
+			<div class="div4-2" style="left: 550px;background-image: url(邀请.png);" onclick="click1()"></div>
+			<div class="div4-3" style="left: 550px;">
+				姓名：<br> 账号：
+				<br> 状态：等待上线
+				<br> 装配选项：
+				<select style="height:30px;width:110px;font-size: 15px;">
+					<option>主轴部分</option>
+					<option>进给传动部件</option>
+					<option>尾座部分</option>
+					<option>主轴传动部件</option>
+					<option>整机组装</option>
+				</select>
+			</div>
+			<div class="div4-2" style="left: 925px;background-image: url(邀请.png);" onclick="click1()"></div>
+			<div class="div4-3" style="left: 925px;">
+				姓名：<br> 账号：
+				<br> 状态：等待上线
+				<br> 装配选项：
+				<select style="height:30px;width:110px;font-size: 15px;">
+					<option>主轴部分</option>
+					<option>进给传动部件</option>
+					<option>尾座部分</option>
+					<option>主轴传动部件</option>
+					<option>整机组装</option>
+				</select>
+			</div>
+			<!--弹窗-->
+			<div class="div4-4" id="tan">
+				暂无好友上线
+				<div style="position: absolute;top: 10px;font-weight:bold;font-size: 25px; ">好友列表</div>
+				<div class="img4-1" onclick="off()"></div>
+				<button class="but4-2">邀请</button>
+			</div>
+			<!--开始-->
+			<button class="but4-1" onclick="star()">开始</button>
+		</div>
+	</div>
+
+
+</body>
+<script>
+	//根据窗口裁剪底图
+	document.getElementById("bg").style.width = winwigh + 'px';
+	document.getElementById("bg").style.height = winheight + 'px';
+
+	function click1() {
+		document.getElementById("tan").style.display = "flex"
+	}
+
+	function off() {
+		document.getElementById("tan").style.display = "none"
+	}
+
+	function star() {
+		alert("请在二位以上同学同时在线环境下运行")
+	}
+	function back() {
+		window.location.replace('2.html')
+	}
+</script>
+
+</html>

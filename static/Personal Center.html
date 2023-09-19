@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <title>个人中心</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="bg">
+        <div class="div5-1">
+            <div class="back" style="position: absolute;top: 20px;left:65px;background-image:url(返回.png);width: 30px;height: 30px;background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;" onclick="back()"></div>
+            <div class="back" style="height: 30px;left:30px ;position: absolute;top: 23px;left:100px;" onclick="back()">返回</div>
+            <div class="div4-2" style="top: 92px;left: 177px ;"></div>
+            <h2 style="position: absolute;top: 297px;left:240px;">个人信息</h2>
+            <div style="    position: absolute;
+            top: 376px;
+            left: 190px;
+            font-size: 23px;">
+                姓&emsp;名：吴云飞<br>
+                班&emsp;级：数控技术2101班<br>
+                账&emsp;号：JDX201214<br>
+                学&emsp;号：21000303212<br>
+                手机号：19933217926<br>
+            </div>
+            <div class="div5-2">成绩分析</div>
+            <div id="time" style="position: absolute;top: 10px;left: 1030px;">登录时间：2022/11/06/15:30</div>
+            <div class="div5-3">
+                <div style="position: absolute;top:10px;left: 50px;font-size: 23px;">实训记录（最近三天）:<br>
+                </div>
+                <div style="position: absolute;top:50px;left: 120px;font-size: 20px;">
+                    离心泵拆装<br>
+                    CNC车床自动上下料拆装<br>
+                    数控加工中心部件拆装<br>
+                    直流电动机调速接线<br>
+                </div>
+
+            </div>
+            <div class="div5-4">
+                <div style="position: absolute;left: 50px;font-size: 23px;">平均得分：<br>
+                </div>
+                <div style="position: absolute;left: 120px;top:30px;font-size: 20px;">
+                    机床PMC故障诊断：83分<br>
+                    机械结构装配调试：61分<br>
+                </div>
+            </div>
+            <div class="div5-5">
+                <div style="position: absolute;left: 50px;font-size: 23px;">学习建议：</div>
+                <div style="position: absolute;left: 120px;top:30px;font-size: 20px;">
+                    建议加强机械结构原理知识学习
+                </div>
+
+            </div>
+            <div style="position: absolute;top: 548px;left: 334px;font-size: 23px;">推荐学习课程：
+            </div>
+            <div style="position: absolute;top: 580px;left: 334px;font-size: 17px;">
+                （点击链接跳转）
+            </div>
+            <div style="position: absolute;top: 548px;left: 494px;font-size: 20px;">
+                <a href="https://www.icourse163.org/course/NWPU-20007?from=searchPage&outVendor=zw_mooc_pcssjg_">
+                    https://www.icourse163.org/course/NWPU-20007?from=searchPage&outVendor=zw_mooc_pcssjg_</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //根据窗口裁剪底图
+    document.getElementById("bg").style.width = winwigh + 'px';
+    document.getElementById("bg").style.height = winheight + 'px';
+
+    function time() {
+        var today = new Date();
+        today.setFullYear(2022, 11, 18)
+        var year = today.getFullYear();
+        var month = today.getMonth();
+        var day = today.getDate();
+        var shi = today.getHours();
+        var fen = today.getMinutes();
+        var miao = today.getSeconds();
+
+        var week_str;
+        switch (day) {
+            case 0: week_str = "星期日"; break;
+            case 1: week_str = "星期一"; break;
+            case 2: week_str = "星期二"; break;
+            case 3: week_str = "星期三"; break;
+            case 4: week_str = "星期四"; break;
+            case 5: week_str = "星期五"; break;
+            case 6: week_str = "星期六"; break;
+        }
+        if (day < 10) {
+            day = "0" + day;
+        }
+
+        var str = "登录时间：" + year + "/" + month + "/" + day + "/" + shi + ":" + fen + ":" + miao;
+        document.getElementById("time").innerHTML = str;
+    }
+    setInterval(time, 1000);
+function back(){
+    window.location.replace('2.html')
+}
+</script>
+
+</html>

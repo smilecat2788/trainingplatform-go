@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>接触器组装</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js"></script>
+</head>
+
+<body>
+    <div id="bg1" style="background: rgb(192, 221, 255);">
+        <div id="ce">
+            <button class="but3-1" onclick="back()">返回</button>
+            <button class="but3-1" style="
+            width: 127px;
+            height: 29px;
+            top: 85px;
+            left: 39px;
+            " onclick="safe()">安全操作规范</button>
+            <div style="height: 200px;top:136px;left: 20px ; position: absolute;color: aliceblue; font-size:  15px;">温馨提示：<br>请在最新的flash环境下运行</div>
+        </div>
+        
+        <div class="vid" id="flash" style="display: block;top: 30px;">
+        <!--flash-->
+        <!--在src和第一个value后插入路径-->
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,16,0"
+                    width="800" height="600">
+                    <param name="movie" value="/static/常见机电部件拆装/接触器组装.swf">
+                    <param name="quality" value="high">
+                    <param name="play" value="true">
+                    <param name="LOOP" value="false">
+                    <embed src="/static/常见机电部件拆装/接触器组装.swf" width="910" height="650" play="true" loop="false" quality="high"
+                        pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash">
+                    </embed>
+                </object>
+        </div>
+        <div class="vid" id="img1" style="background:url('/static/安全规程机械.png');background-size:cover;top: 50px;">
+            <div style="position: absolute;width: 30px;height: 30px;right:0;top:0;background:url('/static/关闭.png');background-size:cover;"
+                onclick="off()"></div>
+        </div>
+        
+</body>
+<script>
+    document.getElementById("bg1").style.width = winwigh + 'px';
+    document.getElementById("bg1").style.height = winheight + 'px';
+
+
+    function back() {
+        window.location.replace("2.html")
+    }
+    function safe() {
+        document.getElementById("img1").style.display = "block"
+    }
+    function off() {
+        document.getElementById("img1").style.display = "none"
+    }
+</script>
+
+</html>
