@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>机电设备故障诊断与维修仿真实训平台</title>
+
+</head>
+
+<body onresize="refresh()">
+
+    <!--底图box-->
+    <div id="bg">
+        <!--文字box-->
+        <div id="txt1"
+            style="position: absolute;height: 71px;width: 656px; top: 50px;right: 30px;background-image: url('/static/logo文字.png');">
+        </div>
+        <!--登录框box-->
+        <div id="div2" class="div"
+            style="  height: 400px;width: 600px;border-radius: 10px;transform: scale(0.75,0.75);">
+            <!--账号输入框-->
+            <input type="text" id="input1" placeholder="请输入学号" class="input" style=" top: 65px; ">
+            <!--密码输入框-->
+            <input type="password" id="input2" placeholder="请输入密码" class="input" style=" top: 170px; ">
+            <!--登录按钮-->
+            <button id="login" onclick="click1()" class="button"
+                style="top: 275px;background:rgba(52, 45, 45,0.81); color: aliceblue;">登录</button>
+        </div>
+        <div style="bottom: 10%;left: 45%;position: absolute;">
+            <a href="https://beian.miit.gov.cn/">冀ICP备2022027378号-1</a>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    //读取窗口大小
+    var winwigh, winheight;
+    if (window.innerWidth) {
+        winwigh = window.innerWidth;
+        winheight = window.innerHeight;
+    }
+    else {
+        winwigh = document.documentElement.clientWidth;
+        winheight = document.documentElement.clientHeight;
+    }
+    console.log("宽" + winwigh);
+    console.log("高" + winheight);
+    //根据窗口裁剪底图
+    document.getElementById("bg").style.width = winwigh + 'px';
+    document.getElementById("bg").style.height = winheight + 'px';
+    //根据窗口设置登录box居中
+    document.getElementById("div2").style.top = winheight / 2 - 200 + 'px';
+    document.getElementById("div2").style.left = winwigh / 2 - 300 + 'px';
+    //随窗口变化
+    function refresh() {
+        if (winwigh != window.innerWidth) {
+            debounce(location.reload(), 2000);
+        }
+    }
+    //消抖函数
+    function debounce(fun, wait) {
+        var time;
+        return function () {
+            clearTimeout(time);
+            time = setTimeout(fun, wait);
+        }
+    }
+    //登录按钮点击事件
+    function click1() {
+        var int1 = document.getElementById("input1").value;
+        var int2 = document.getElementById("input2").value;
+        var scussed=0;
+        const form = new FormData();
+        form.append('user', int1);
+        form.append('psw', int2);
+        fetch('/login', {
+            method: 'POST',
+            body: form
+        })
+            .then(response => {
+                if (response.status == 200) {
+                    scussed=1;
+                    return response.text();
+                }
+            })
+            .then(htmlContent => {
+                if (scussed==1){
+                var newWindow = window.open();
+                newWindow.document.write(htmlContent);
+                }
+                else{
+                    alert("登陆失败")
+                }
+                // 创建一个新的页面，将 POST 返回的 HTML 内容显示在其中
+
+            })
+            .catch(error => {
+                console.error("发生错误：", error);
+            });
+    }
+</script>
+
+</html>
